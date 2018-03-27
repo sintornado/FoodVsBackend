@@ -5,15 +5,21 @@ import { DishesEditComponent } from './dishes-edit/dishes-edit.component';
 import { DishesAddComponent } from './dishes-add/dishes-add.component';
 
 const routes: Routes = [
-    { path: '/', component: DishesListComponent},
-    { path: 'edit/:id', component: DishesEditComponent},
-    { path: 'add', component: DishesAddComponent},
+    {
+        path: '',
+        children: [
+            { path: '', component: DishesListComponent },
+            { path: 'edit/:id', component: DishesEditComponent },
+            { path: 'add', component: DishesAddComponent },
+        ]
+    },
+
 ]
 
 @NgModule({
     imports: [
         RouterModule.forChild(routes)
-    ]
-  })
-  export class DishesRoutingModule { }
-  
+    ],
+    exports: [RouterModule]
+})
+export class DishesRoutingModule { }

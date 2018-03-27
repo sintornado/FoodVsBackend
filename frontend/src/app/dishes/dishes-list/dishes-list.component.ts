@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { DishesService } from '../dishes.service';
+import  { Dish }  from '../models/Dish'; 
 
 @Component({
   selector: 'app-dishes-list',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dishes-list.component.css']
 })
 export class DishesListComponent implements OnInit {
-
-  constructor() { }
+  list$: Observable<Dish[]>
+  constructor(private dishesService: DishesService) { }
 
   ngOnInit() {
+    this.list$ = this.dishesService.getList();
   }
 
 }

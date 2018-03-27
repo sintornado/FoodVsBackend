@@ -1,3 +1,9 @@
-<p>
-  dishes-list works!
-</p>
+
+<ul>
+  <li *ngFor="let dish of list$ | async">
+    <a [routerLink]="['./edit', dish.id]">Edit</a>
+    {{dish.title}}
+  </li>
+</ul>
+
+<a routerLink="./add">Add</a>

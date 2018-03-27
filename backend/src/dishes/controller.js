@@ -1,8 +1,12 @@
 class DishesController {
+    
     list(req, res) {
         console.log('got request for dishes');
 
-        res.json([]);
+        res.json([
+            {id: 1, title: 'Борщ', price: 5, available: true},
+            {id: 2, title: 'Гречка', price: 15, available: true}
+        ]);
     }
 
     get(req, res) {
