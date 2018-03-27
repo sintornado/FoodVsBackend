@@ -1,0 +1,16 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes} from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+const routes: Routes = [
+  {path: '', redirectTo: 'dishes'},
+  {path: 'dishes', loadChildren: 'app/dishes/dishes.module#DishesModule'},
+  {path: '**', component: NotFoundComponent}
+]
+
+@NgModule({
+  imports: [
+  ],
+  providers: [],
+})
+export class AppModule { }
