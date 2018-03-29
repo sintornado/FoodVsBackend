@@ -1,3 +1,2 @@
-<p>
-  dishes-edit works!
-</p>
+<h1>Edit User!</h1>
+<app-dishes-form [dish] = "dish$ | async" (saveDish)="onSaveDish($event)">

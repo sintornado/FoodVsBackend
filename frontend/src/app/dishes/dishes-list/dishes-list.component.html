@@ -1,9 +1,43 @@
+<div class="example-container mat-elevation-z8 mat-table">
+  <mat-table #table [dataSource]="list$ | async">
 
-<ul>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column
+    <ng-container matColumnDef="available">
+      <mat-header-cell *matHeaderCellDef> Available </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.available}} </mat-cell>
+    </ng-container> -->
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a mat-raised-button color="accent" routerLink="./edit/{{element.id}}">Edit</a>  
+        <button mat-raised-button color="warn" (click)="deleteDish(element.id)">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <button mat-raised-button color="primary" (click)="addDish()">Add Dish</button>
+</div>
+
+
+<!-- <ul>
   <li *ngFor="let dish of list$ | async">
     <a [routerLink]="['./edit', dish.id]">Edit</a>
     {{dish.title}}
   </li>
 </ul>
 
-<a routerLink="./add">Add</a>
+<a routerLink="./add">Add</a> -->

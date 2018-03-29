@@ -1,3 +1,11 @@
-<p>
-  dishes-form works!
-</p>
+<form (submit)="onSubmit($event)" *ngIf='dish'>
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" class="form-control" name="name" id="name" [(ngModel)]="dish.name" placeholder="Name">
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" class="form-control" name="surname" id="price" [(ngModel)]="dish.price" placeholder="Price">
+        </mat-form-field>
+      
+        <button mat-raised-button color="primary">Save</button>
+</form>

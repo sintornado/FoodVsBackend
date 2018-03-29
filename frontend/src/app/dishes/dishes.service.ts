@@ -18,4 +18,23 @@ export class DishesService {
     return this.http.get<Dish>(url + '/' + id);
   }
 
+  deleteDish(dishId: string) {
+    const url = this.getDishUrl(dishId);
+    return this.http.delete(url);
+  }
+
+  getDishUrl(id: string): string{
+    return `${url}/${id}`;
+  }
+
+  addDish(dish: Dish): Observable<Dish> {
+    return this.http.post<Dish>(url, dish);
+  }
+
+  updateDish(dish: Dish) {
+    const url = this.getDishUrl('dish.id');
+
+    return this.http.put<Dish>(url, dish);
+  }
+
 }
